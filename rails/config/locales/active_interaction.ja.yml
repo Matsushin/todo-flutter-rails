@@ -1,0 +1,9 @@
+ja:
+  active_interaction:
+    attributes:
+      task/create:
+        title: タイトル
+        body: 内容
+      task/update:
+        title: タイトル
+        body: 内容

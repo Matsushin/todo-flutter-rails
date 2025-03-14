@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       scope :users do
         resource :me, controller: 'me', only: %i[show]
       end
+      resources :tasks
       mount_devise_token_auth_for 'User', at: 'auth', controllers: {
         registrations: 'api/v1/auth/registrations'
       }
