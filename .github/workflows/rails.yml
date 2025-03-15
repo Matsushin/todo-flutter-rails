@@ -46,7 +46,7 @@ jobs:
 
     - name: Docker build
       id: docker-build
-      run: pwd && docker-compose build --build-arg BUILDKIT_INLINE_CACHE=1 api
+      run: ls && docker-compose build --build-arg BUILDKIT_INLINE_CACHE=1 api
 
     - name: Docker tag and save
       id: docker-tag-save
