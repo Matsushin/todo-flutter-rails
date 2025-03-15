@@ -46,7 +46,7 @@ jobs:
 
     - name: Docker build
       id: docker-build
-      run: ls && docker-compose build --build-arg BUILDKIT_INLINE_CACHE=1 api
+      run: docker compose build --build-arg BUILDKIT_INLINE_CACHE=1 api
 
     - name: Docker tag and save
       id: docker-tag-save
@@ -95,11 +95,11 @@ jobs:
 
     - name: Docker compose build
       id: docker-build
-      run: docker-compose build --build-arg BUILDKIT_INLINE_CACHE=1 api
+      run: docker compose build --build-arg BUILDKIT_INLINE_CACHE=1 api
 
     - name: Confirm docker-compose logs
       id: confirm-docker-compose-logs
-      run: docker-compose logs db
+      run: docker compose logs db
 
     - name: Cache bundle gems
       id: cache-bundle-gems
@@ -114,12 +114,12 @@ jobs:
       id: setup-docker
       shell: bash
       run: |
-        docker-compose run api bundle install
-        docker-compose run api bundle exec rails db:prepare
+        docker compose run api bundle install
+        docker compose run api bundle exec rails db:prepare
 
     - name: Run test
       id: run-test
       run:  |
-        docker-compose up -d
-        docker-compose run api bundle exec rspec
+        docker compose up -d
+        docker compose run api bundle exec rspec
 
