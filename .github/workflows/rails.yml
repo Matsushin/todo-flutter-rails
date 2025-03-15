@@ -17,7 +17,7 @@ jobs:
   image-cache-or-build:
     defaults:
       run:
-        working-directory: rails
+        working-directory: ./rails
     strategy:
       matrix:
         ruby: ["3.4.2"]
@@ -45,7 +45,7 @@ jobs:
       run: docker image load -i ${IMAGE_CACHE_DIR}/image.tar
 
     - name: Docker build
-      working-directory: rails
+      working-directory: ./rails
       id: docker-build
       run: docker-compose build --build-arg BUILDKIT_INLINE_CACHE=1 api
 
