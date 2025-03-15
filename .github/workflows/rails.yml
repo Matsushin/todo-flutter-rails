@@ -47,7 +47,7 @@ jobs:
     - name: Docker build
       working-directory: ./rails
       id: docker-build
-      run: cd ./rails && docker-compose build --build-arg BUILDKIT_INLINE_CACHE=1 api
+      run: pwd && docker-compose build --build-arg BUILDKIT_INLINE_CACHE=1 api
 
     - name: Docker tag and save
       id: docker-tag-save
