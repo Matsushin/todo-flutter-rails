@@ -29,6 +29,9 @@ jobs:
     - name: Check out code
       id: checkout
       uses: actions/checkout@v2
+    - name: Generate dotenv
+      id: generate-dotenv
+      run: cp .env.sample .env.development
 
     - name: Cache docker image
       id: cache-docker-image
