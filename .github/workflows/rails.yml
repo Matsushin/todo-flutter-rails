@@ -39,7 +39,9 @@ jobs:
           bundle install
       # Add or replace database setup steps here
       - name: Set up database schema
-        run: bin/rails db:schema:load
+        run: |
+          bundle exec rake db:create RAILS_ENV=test
+          bundle exec rake db:migrate RAILS_ENV=test
       # Add or replace test runners here
       - name: Run rspec
         run: bundle exec rspec
