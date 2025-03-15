@@ -20,7 +20,7 @@ jobs:
           bundler-cache: true
 
       - name: Scan for common Rails security vulnerabilities using static analysis
-        run: bin/brakeman --no-pager
+        run: rails/bin/brakeman --no-pager
 
   lint:
     runs-on: ubuntu-latest
@@ -35,7 +35,7 @@ jobs:
           bundler-cache: true
 
       - name: Lint code for consistent style
-        run: bin/rubocop -f github
+        run: rails/bin/rubocop -f github
 
   test:
     runs-on: ubuntu-latest
@@ -73,4 +73,4 @@ jobs:
           RAILS_ENV: test
           DATABASE_URL: mysql2://127.0.0.1:3306
           # REDIS_URL: redis://localhost:6379/0
-        run: bin/rails db:test:prepare test
+        run: rails/bin/rails db:test:prepare test
