@@ -24,6 +24,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
   gem 'database_cleaner-active_record'
   gem 'dotenv-rails'
+  gem 'bundler-audit'
 end
 
 group :test do
