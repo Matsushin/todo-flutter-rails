@@ -29,7 +29,7 @@ RSpec.describe Api::V1::TasksController, type: :request do
     it 'ログイン済みユーザがタスクを作成できる' do
       login_user = { email: 'yamada@example.com', password: 'password' }
       auth_tokens = sign_in(login_user)
-      post '/api/v1/tasks', headers: auth_tokens, params: {task: { title:'title', body: 'body' }}
+      post '/api/v1/tasks', headers: auth_tokens, params: { task: { title: 'title', body: 'body' } }
       expect(response).to have_http_status :ok
 
       body = JSON.parse(response.body)
@@ -41,7 +41,7 @@ RSpec.describe Api::V1::TasksController, type: :request do
     end
 
     it 'ログイン済みでない場合ユーザはタスクを作成できない' do
-      post '/api/v1/tasks', params: {task: { title:'title' }}
+      post '/api/v1/tasks', params: { task: { title: 'title' } }
       expect(response).to have_http_status :unauthorized
       expect(Task.count).to eq 3
       expect(user.tasks.count).to eq 2
@@ -50,7 +50,7 @@ RSpec.describe Api::V1::TasksController, type: :request do
     it 'タスク名が空文字の場合タスクを作成できない' do
       login_user = { email: 'yamada@example.com', password: 'password' }
       auth_tokens = sign_in(login_user)
-      post '/api/v1/tasks', headers: auth_tokens, params: {task: { title: "", body: 'body' }}
+      post '/api/v1/tasks', headers: auth_tokens, params: { task: { title: "", body: 'body' } }
       expect(response).to have_http_status :bad_request
       expect(Task.count).to eq 3
       expect(user.tasks.count).to eq 2
@@ -73,7 +73,7 @@ RSpec.describe Api::V1::TasksController, type: :request do
     it 'ログイン済みユーザがタスクを更新できる' do
       login_user = { email: 'yamada@example.com', password: 'password' }
       auth_tokens = sign_in(login_user)
-      patch "/api/v1/tasks/#{task.id}", headers: auth_tokens, params: {task: { title:'title', body: 'body' }}
+      patch "/api/v1/tasks/#{task.id}", headers: auth_tokens, params: { task: { title: 'title', body: 'body' } }
       expect(response).to have_http_status :ok
 
       body = JSON.parse(response.body)
@@ -84,7 +84,7 @@ RSpec.describe Api::V1::TasksController, type: :request do
     it 'タスク名と内容が空文字の場合タスクを更新できない' do
       login_user = { email: 'yamada@example.com', password: 'password' }
       auth_tokens = sign_in(login_user)
-      patch "/api/v1/tasks/#{task.id}", headers: auth_tokens, params: {task: { title: '' }}
+      patch "/api/v1/tasks/#{task.id}", headers: auth_tokens, params: { task: { title: '' } }
       expect(response).to have_http_status :bad_request
 
       body = JSON.parse(response.body)

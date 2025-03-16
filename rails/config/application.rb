@@ -10,7 +10,7 @@ module TodoFlutterRails
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.0
-    config.time_zone = 'Tokyo'
+    config.time_zone = "Tokyo"
     config.active_record.default_timezone = :local
     config.i18n.default_locale = :ja
 
@@ -32,6 +32,6 @@ module TodoFlutterRails
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
-    config.x.cors_allowed_origins = ENV.fetch('CORS_ALLOWED_ORIGINS', '*')
+    config.x.cors_allowed_origins = ENV.fetch("CORS_ALLOWED_ORIGINS", "*")
   end
 end

@@ -16,7 +16,6 @@ describe Task::Delete do
 
   context '#execute' do
     it 'タスクが削除されている' do
-
       expect(outcome).to be_valid
       expect(result).to eq task
       expect(Task.count).to eq 0

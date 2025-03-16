@@ -25,7 +25,7 @@ describe Task::Create do
     let(:inputs) { { user: user, title: '', body: 'テストタスク内容' } }
 
     it { expect(outcome).to be_invalid }
-    it { expect(outcome.errors.full_messages).to eq ['タイトルを入力してください'] }
+    it { expect(outcome.errors.full_messages).to eq [ 'タイトルを入力してください' ] }
   end
 
   context '#execute' do

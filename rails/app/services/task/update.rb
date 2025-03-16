@@ -1,5 +1,4 @@
 class Task::Update < ApplicationService
-
   object :task
   string :title, default: nil
   string :body, default: nil
