@@ -20,15 +20,14 @@ describe Task::Update do
   end
 
   context 'タスクが空文字の場合' do
-    let(:inputs) { { task: task, title: ''} }
+    let(:inputs) { { task: task, title: '' } }
 
     it { expect(outcome).to be_invalid }
-    it { expect(outcome.errors.full_messages).to eq ['タイトルを入力してください'] }
+    it { expect(outcome.errors.full_messages).to eq [ 'タイトルを入力してください' ] }
   end
 
   context '#execute' do
     it 'タスク名が更新できる' do
-
       expect(outcome).to be_valid
       expect(result.title).to eq 'テスト2タスク'
       expect(task.title).to eq 'テスト2タスク'
